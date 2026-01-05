@@ -59,29 +59,36 @@ export default function PatientScreen({
         <Text style={styles.statusText}>
           {isScanning 
             ? (scanMode === 'face' ? "ANALYZING BIOMETRIC FIELD..." : "PLACE FINGER OVER REAR LENS & FLASH") 
-            : "SHATKONA WELLNESS PORTAL"}
+            : "SHATKONA LIVE TEST"}
         </Text>
 
         {/* CAMERA SECTION */}
         {isScanning && (
-          <View style={styles.cameraFrame}>
-            <CameraView
-              ref={cameraRef}
-              style={styles.camera}
-              facing={scanMode === 'face' ? "front" : "back"}
-            >
-              <View style={styles.overlay}>
-                <Animated.View style={[styles.scannerLine, { transform: [{ translateY }] }]} />
-                
-                <View style={styles.medicalHUD}>
-                  <Text style={styles.hudLabel}>SIGNAL STRENGTH: ████░ 80%</Text>
-                  <Text style={styles.hudLabel}>PPG SENSOR: {reading > 20 ? 'DETECTED' : 'SCANNING'}</Text>
-                  <Text style={styles.hudLabel}>BPM: {reading > 40 ? Math.floor(65 + Math.random() * 10) : '--'}</Text>
-                </View>
-              </View>
-            </CameraView>
-          </View>
-        )}
+  <View style={styles.cameraFrame}>
+    <CameraView ref={cameraRef} style={styles.camera} facing={scanMode === 'face' ? "front" : "back"}>
+      {/* Target Corners */}
+      <View style={styles.targetCornerTopLeft} />
+      <View style={styles.targetCornerTopRight} />
+      <View style={styles.targetCornerBottomLeft} />
+      <View style={styles.targetCornerBottomRight} />
+
+      <View style={styles.overlay}>
+        <Animated.View style={[styles.scannerLine, { transform: [{ translateY }] }]} />
+        
+        {/* Live Data Streams */}
+        <View style={styles.dataStreamLeft}>
+          <Text style={styles.dataText}>SYS: {Math.floor(110 + Math.random() * 20)}</Text>
+          <Text style={styles.dataText}>DIA: {Math.floor(70 + Math.random() * 15)}</Text>
+        </View>
+        
+        <View style={styles.dataStreamRight}>
+          <Text style={styles.dataText}>SpO2: 98%</Text>
+          <Text style={styles.dataText}>VAR: 1.2ms</Text>
+        </View>
+      </View>
+    </CameraView>
+  </View>
+)}
 
         {/* PILLARS GRID */}
         {!isScanning && (
@@ -127,17 +134,29 @@ export default function PatientScreen({
 
       {/* MENU MODAL */}
       <Modal visible={ecoMenuVisible} transparent animationType="slide">
-        <TouchableOpacity style={styles.modalOverlay} onPress={() => setEcoMenuVisible(false)}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>ECOSYSTEM ACCESS</Text>
-            {['ASSAM GEOGLYPH', 'CPRIMA LOGIN', 'ADMIN / STAFF', 'CORPORATE PORTAL'].map((item) => (
-              <TouchableOpacity key={item} style={styles.menuItem}>
-                <Text style={styles.menuText}>{item}</Text>
-              </TouchableOpacity>
-            ))}
+  <TouchableOpacity style={styles.modalOverlay} onPress={() => setEcoMenuVisible(false)}>
+    <View style={styles.modalContent}>
+      <View style={styles.modalHeaderHandle} />
+      <Text style={styles.modalTitle}>SHATKONA GLOBAL ECOSYSTEM</Text>
+      
+      {[
+        { name: 'ASSAM GEOGLYPH PORTAL', icon: 'map-marker-radius', status: 'ONLINE' },
+        { name: 'CPRIMA CLINIC LOGIN', icon: 'hospital-building', status: 'SECURE' },
+        { name: 'PHYSICIAN DASHBOARD', icon: 'shield-check', status: 'RESTRICTED' },
+        { name: 'CORPORATE WELLNESS', icon: 'office-building', status: 'ACTIVE' }
+      ].map((item) => (
+        <TouchableOpacity key={item.name} style={styles.menuItem}>
+          <MaterialCommunityIcons name={item.icon as any} size={24} color="#D4AF37" />
+          <View style={{ flex: 1, marginLeft: 15 }}>
+            <Text style={styles.menuText}>{item.name}</Text>
+            <Text style={{ color: '#D4AF37', fontSize: 10 }}>{item.status}</Text>
           </View>
+          <MaterialCommunityIcons name="chevron-right" size={20} color="#333" />
         </TouchableOpacity>
-      </Modal>
+      ))}
+    </View>
+  </TouchableOpacity>
+</Modal>
     </SafeAreaView>
   );
 }

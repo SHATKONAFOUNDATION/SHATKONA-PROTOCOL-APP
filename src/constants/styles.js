@@ -5,6 +5,7 @@ const { width, height } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#000124' },
   
+  
   // Permission styles
   permissionContainer: { flex: 1, backgroundColor: '#000124', justifyContent: 'center', alignItems: 'center' },
   permissionCard: { width: '85%', alignItems: 'center', padding: 30, borderRadius: 30, borderWidth: 1, borderColor: '#D4AF3733', backgroundColor: 'rgba(255,255,255,0.02)' },
@@ -41,6 +42,76 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
   },
   hudLabel: { color: '#D4AF37', fontSize: 10, fontFamily: 'monospace', marginBottom: 2 },
+  // Add these inside your styles.js
+  targetCornerTopLeft: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    width: 30,
+    height: 30,
+    borderTopWidth: 3,
+    borderLeftWidth: 3,
+    borderColor: '#D4AF37',
+  },
+  targetCornerTopRight: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    width: 30,
+    height: 30,
+    borderTopWidth: 3,
+    borderRightWidth: 3,
+    borderColor: '#D4AF37',
+  },
+  targetCornerBottomLeft: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    width: 30,
+    height: 30,
+    borderBottomWidth: 3,
+    borderLeftWidth: 3,
+    borderColor: '#D4AF37',
+  },
+  targetCornerBottomRight: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    width: 30,
+    height: 30,
+    borderBottomWidth: 3,
+    borderRightWidth: 3,
+    borderColor: '#D4AF37',
+  },
+  dataStreamLeft: {
+    position: 'absolute',
+    left: 10,
+    top: '30%',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: 5,
+    borderRadius: 4,
+  },
+  dataStreamRight: {
+    position: 'absolute',
+    right: 10,
+    top: '30%',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: 5,
+    borderRadius: 4,
+  },
+  dataText: {
+    color: '#D4AF37',
+    fontSize: 10,
+    fontFamily: 'monospace', // Gives it that "computer code" look
+    fontWeight: 'bold',
+  },modalHeaderHandle: {
+    width: 40,
+    height: 5,
+    backgroundColor: '#D4AF3733', // Subtle gold
+    borderRadius: 3,
+    alignSelf: 'center',
+    marginBottom: 15,
+  },
 
   // Grid & Pillars
   scrollContent: { paddingBottom: 100 },
