@@ -6,7 +6,7 @@ const { width } = Dimensions.get('window');
 
 const PatientDashboard = () => {
   // --- STATE DECLARATIONS ---
-  const [userProgress, setUserProgress] = useState(6); // 0, 3, 6, or 9
+  const [userProgress, setUserProgress] = useState(3); // 0, 3, 6, or 9
   const [isScanning, setIsScanning] = useState(false);
   const [reading, setReading] = useState(0);
   const [ppgData, setPpgData] = useState(new Array(20).fill(0));

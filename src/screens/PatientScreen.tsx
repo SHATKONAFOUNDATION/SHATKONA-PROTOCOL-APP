@@ -74,7 +74,7 @@ export default function PatientScreen({
     6: {
       title: "PHASE 2: VITALITY",
       focus: "Structural Alignment",
-      details: "• Kinetic Chain Optimization\n• Tensegrity System Training\n• HRV Synchronicity\n• Pain Pattern Erasure"
+      details: "• Kinetic Chain Optimization\n• Tensegrity System Training\n• Endurance\n• Pain Pattern Erasure"
     },
     9: {
       title: "PHASE 3: MASTERY",
