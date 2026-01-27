@@ -110,6 +110,12 @@ const [isFinished, setIsFinished] = useState(false);
             <TouchableOpacity style={styles.startScanBtnTop} onPress={() => startScan('face')}>
               <Text style={styles.scanBtnText}>FACE SCAN</Text>
             </TouchableOpacity>
+            <TouchableOpacity 
+  style={[styles.startScanBtnTop, { backgroundColor: '#D4AF37' }]} 
+  onPress={() => startScan('skeletal')}
+>
+  <Text style={[styles.scanBtnText, { color: '#000' }]}>AI SCAN</Text>
+</TouchableOpacity>
             <TouchableOpacity style={[styles.startScanBtnTop, { backgroundColor: '#FFD700' }]} onPress={() => startScan('finger')}>
               <Text style={styles.scanBtnText}>FINGER SCAN</Text>
             </TouchableOpacity>
@@ -197,7 +203,7 @@ const [isFinished, setIsFinished] = useState(false);
           {/* 2. PROGRESS CARDS WITH LOCKING LOGIC */}
           {!isScanning && (
             <View style={{ paddingHorizontal: 20, marginBottom: 15 }}>
-              <Text style={[styles.statusText, { textAlign: 'left' }]}>SHATKONA FASCIAMAX PROTOCOL PROGRESS</Text>
+              <Text style={[styles.statusText, { textAlign: 'left' }]}>SHATKONA PROTOCOL PROGRESS</Text>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
                 {[3, 6, 9].map((mod) => {
                   const isLocked = userProgress < mod;
@@ -242,10 +248,14 @@ const [isFinished, setIsFinished] = useState(false);
           )}
 
           <Text style={styles.statusText}>
-            {isScanning 
-              ? (scanMode === 'face' ? "ANALYZING BIOMETRIC FIELD..." : "SCANNING FINGER VASCULARITY...") 
-              : "FASCIAMAX™ LIVE SYSTEM ACTIVE"}
-          </Text>
+  {isScanning 
+    ? (scanMode === 'face' 
+        ? "ANALYZING BIOMETRIC FIELD..." 
+        : scanMode === 'skeletal' 
+          ? "AI FASCIAL MAPPING ACTIVE..." 
+          : "SCANNING FINGER VASCULARITY...") 
+    : "FASCIAMAX™ LIVE SYSTEM ACTIVE"}
+</Text>
 
           {/* 4. CAMERA HUD */}
           {isScanning && (
@@ -380,7 +390,7 @@ const [isFinished, setIsFinished] = useState(false);
       <Modal visible={ecoMenuVisible} transparent animationType="slide">
         <TouchableOpacity style={styles.modalOverlay} onPress={() => setEcoMenuVisible(false)}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>SHATVAYU GLOBAL FOUNDATION</Text>
+            <Text style={styles.modalTitle}>SHATVAYU FOUNDATION</Text>
             {['FASCIAMAX™ CLINIC LOG', 'ASSAM GEOGLYPH MAP', 'CPRIMA PORTAL', 'CORPORATE MASTERY'].map((item) => (
               <TouchableOpacity key={item} style={styles.menuItem} onPress={() => setEcoMenuVisible(false)}>
                 <Text style={styles.menuText}>{item}</Text>
