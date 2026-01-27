@@ -287,15 +287,20 @@ const renderSkeletalOverlay = () => {
 </Text>
 
           {/* 4. CAMERA HUD */}
-          {isScanning && (
-            <View style={styles.cameraFrame}>
-              <CameraView ref={cameraRef} style={styles.camera} facing={scanMode === 'face' ? "front" : "back"}>
-                <View style={styles.overlay}>
-                  <Animated.View style={[styles.scannerLine, { transform: [{ translateY }] }]} />
-                </View>
-              </CameraView>
-            </View>
-          )}
+{isScanning && (
+  <View style={styles.cameraFrame}>
+    <CameraView ref={cameraRef} style={styles.camera} facing={scanMode === 'face' ? "front" : "back"}>
+      <View style={styles.overlay}>
+        {/* The Moving Scan Line */}
+        <Animated.View style={[styles.scannerLine, { transform: [{ translateY }] }]} />
+        
+        {/* ADD THIS LINE HERE: This draws the Golden Skeletal Lines & Angles */}
+        {renderSkeletalOverlay()}
+        
+      </View>
+    </CameraView>
+  </View>
+)}
 
           {/* 5. PILLARS GRID */}
           {!isScanning && (
