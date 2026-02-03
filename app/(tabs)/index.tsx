@@ -76,11 +76,11 @@ export default function App() {
             <Text style={styles.sectionDesc}>Master the Forensic Architecture of your body.</Text>
             
             {[
-              { id: 1, title: 'PRANA PULSE', dur: '12m', status: 'UNLOCKED' },
-              { id: 2, title: 'MYOFASCIAL LIBERATION', dur: '18m', status: 'LOCKED' },
-              { id: 3, title: 'YOGIC STRETCHING', dur: '15m', status: 'LOCKED' },
-              { id: 4, title: 'THERAPEUTIC STRENGTH', dur: '20m', status: 'LOCKED' },
-              { id: 5, title: 'CHAKRA BALANCE', dur: '15m', status: 'LOCKED' },
+              { id: 1, title: 'PRANA PULSE', dur: '30m', status: 'UNLOCKED' },
+              { id: 2, title: 'MYOFASCIAL LIBERATION', dur: '45m', status: 'LOCKED' },
+              { id: 3, title: 'YOGIC STRETCHING', dur: '30m', status: 'LOCKED' },
+              { id: 4, title: 'THERAPEUTIC STRENGTH', dur: '45m', status: 'LOCKED' },
+              { id: 5, title: 'CHAKRA BALANCE', dur: '45m', status: 'LOCKED' },
               { id: 6, title: 'VOW OF MASTERY', dur: '30m', status: 'LOCKED' },
             ].map((pillar) => (
               <TouchableOpacity key={pillar.id} style={styles.pillarCard}>
