@@ -1,10 +1,10 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-export default function App() {
+export default function FasciamaxHome() {
   const router = useRouter();
   const [viewMode, setViewMode] = useState<'RITUAL' | 'ACADEMY'>('RITUAL');
 
@@ -23,6 +23,7 @@ export default function App() {
 
   return (
     <View style={styles.mainContainer}>
+      <StatusBar barStyle="light-content" />
       
       {/* 🏛️ ARCHITECT HEADER */}
       <View style={styles.header}>
@@ -40,7 +41,7 @@ export default function App() {
         </TouchableOpacity>
       </View>
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         {viewMode === 'RITUAL' ? (
           <View>
             <View style={styles.titleSection}>
@@ -51,7 +52,7 @@ export default function App() {
             <TouchableOpacity 
               style={[styles.ritualCard, { borderLeftColor: routine.color }]} 
               activeOpacity={0.9}
-              onPress={() => router.push({ pathname: '/player', params: { id: routine.id } })}
+              onPress={() => router.push({ pathname: '/player' as any, params: { id: routine.id } })}
             >
               <View style={styles.cardHeader}>
                 <Text style={styles.ritualTag}>30-MINUTE RESET</Text>
@@ -107,6 +108,7 @@ export default function App() {
   );
 }
 
+// ⚠️ IMPORTANT: Ensure the styles object is OUTSIDE the function component
 const styles = StyleSheet.create({
   mainContainer: { flex: 1, backgroundColor: '#050505' },
   header: { 
@@ -118,12 +120,10 @@ const styles = StyleSheet.create({
   subLogo: { color: '#475569', fontSize: 8, fontWeight: 'bold', letterSpacing: 1 },
   navBtn: { backgroundColor: '#1e293b', paddingVertical: 10, paddingHorizontal: 15, borderRadius: 8, borderWidth: 1, borderColor: '#334155' },
   navText: { color: '#fbbf24', fontSize: 10, fontWeight: '900' },
-  
   scrollContent: { padding: 25, paddingBottom: 120 },
   titleSection: { marginBottom: 25 },
   sectionTitle: { color: '#fff', fontSize: 24, fontWeight: 'bold' },
   dateText: { color: '#64748b', fontSize: 12, fontWeight: 'bold', marginTop: 4, letterSpacing: 1 },
-  
   ritualCard: { 
     backgroundColor: '#0f172a', padding: 25, borderRadius: 20, 
     borderLeftWidth: 6, marginBottom: 25,
@@ -136,19 +136,16 @@ const styles = StyleSheet.create({
   ritualSubText: { color: '#94a3b8', fontSize: 16, marginTop: 5, fontWeight: '500' },
   playButton: { backgroundColor: '#fbbf24', marginTop: 25, padding: 18, borderRadius: 12, alignItems: 'center' },
   playText: { color: '#000', fontWeight: '900', fontSize: 14, letterSpacing: 1 },
-
   statsContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   statBox: { backgroundColor: '#0a0a0a', width: '47%', padding: 20, borderRadius: 15, borderWidth: 1, borderColor: '#1a1a1a', alignItems: 'center' },
   statValue: { color: '#fff', fontSize: 22, fontWeight: 'bold' },
   statLabel: { color: '#475569', fontSize: 9, fontWeight: '900', marginTop: 5 },
-
   sectionDesc: { color: '#64748b', fontSize: 14, marginBottom: 25 },
   pillarCard: { backgroundColor: '#0a0a0a', padding: 20, borderRadius: 15, marginBottom: 15, flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderColor: '#1a1a1a' },
   pillarNum: { color: '#fbbf24', fontSize: 18, fontWeight: '900' },
   pillarTitle: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
   pillarStatus: { color: '#475569', fontSize: 10, fontWeight: 'bold', marginTop: 2 },
   lockIcon: { color: '#334155', fontSize: 18 },
-
   footer: { position: 'absolute', bottom: 0, width: '100%', padding: 20, backgroundColor: '#050505', alignItems: 'center' },
   footerText: { color: '#1e293b', fontSize: 9, fontWeight: 'bold', letterSpacing: 1 }
 });
