@@ -6,7 +6,7 @@
     "newArchEnabled": true,
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "fasciamax-app",
+    "scheme": "fasciamax",
     "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -30,7 +30,21 @@
         "CAMERA",
         "VIBRATE"
       ],
-      "package": "com.fasciamax.portal"
+      "package": "com.fasciamax.portal",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": {
+            "scheme": "fasciamax",
+            "host": "login"
+          },
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
     },
     "plugins": [
       "expo-router",
