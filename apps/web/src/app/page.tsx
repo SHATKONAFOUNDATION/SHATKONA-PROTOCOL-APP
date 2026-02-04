@@ -1,3 +1,4 @@
+"use client"; // <--- Add this exact line at the very top
 
 export default function LandingPage() {
   return (
