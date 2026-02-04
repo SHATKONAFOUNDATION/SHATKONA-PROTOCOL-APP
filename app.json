@@ -40,7 +40,8 @@
           "cameraPermission": "Allow FasciaMax to use the camera for wellness scanning.",
           "enableTorch": true
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true,
