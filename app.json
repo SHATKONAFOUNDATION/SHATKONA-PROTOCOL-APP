@@ -1,12 +1,12 @@
 {
   "expo": {
     "name": "Shatvayu",
-    "slug": "shatvayu-app",
+    "slug": "shatvayu-official",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "scheme": "shatvayu",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
