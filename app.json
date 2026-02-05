@@ -1,20 +1,51 @@
 {
   "expo": {
-    "name": "Shatvayu",
-    "slug": "shatvayu-official",
+    "name": "FasciaMax",
+    "slug": "fasciamax-portal",
     "version": "1.0.0",
+    "newArchEnabled": true,
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "shatvayu",
+    "scheme": "fasciamax-app",
     "userInterfaceStyle": "dark",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fasciamax.portal",
+      "infoPlist": {
+        "NSCameraUsageDescription": "FasciaMax uses the camera for S-Index face scanning and Heart Rate detection.",
+        "NSMicrophoneUsageDescription": "This app does not record audio."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "CAMERA",
+        "VIBRATE"
+      ],
+      "package": "com.fasciamax.portal"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow FasciaMax to use the camera for wellness scanning.",
+          "enableTorch": true
+        }
+      ],
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": false
     }
   }
 }
