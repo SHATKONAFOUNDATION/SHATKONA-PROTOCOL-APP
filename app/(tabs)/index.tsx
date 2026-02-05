@@ -169,7 +169,7 @@ export default function FasciamaxHome() {
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.storeBtn} onPress={() => router.push('/clinics' as any)}>
-                <Text style={styles.actionBtnText}>🛍️ ORDER SCULPTOR TOOLS</Text>
+                <Text style={styles.actionBtnText}>🛍️ ORDER BITHIKA FASCIA LOTION & SCULPTOR TOOLS</Text>
               </TouchableOpacity>
             </View>
           </View>
